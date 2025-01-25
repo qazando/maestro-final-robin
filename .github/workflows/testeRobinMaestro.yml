@@ -25,8 +25,8 @@ jobs:
       # Exportar chave API e Project ID do Maestro
       - name: Set Environment Variables
         run: |
-          echo "MAESTRO_API_KEY=rb_TaUkQb07Vn8pdQZhSanYBSpUynI6OaoyGnKJX4f63XJG7kgNsWf3cb4pEMNWUnzhUltqmsgNTUn25mx0dETVIrAfSEJAIWI6mxB" >> $GITHUB_ENV
-          echo "PROJECT_ID=proj_01jj88aq40fhar6brh9v4ravkr" >> $GITHUB_ENV
+          echo "MAESTRO_API_KEY=${{ secrets.MAESTRO_API_KEY }}" >> $GITHUB_ENV
+          echo "PROJECT_ID=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
 
       # Rodar testes usando o Maestro
       - name: Run Maestro Tests
