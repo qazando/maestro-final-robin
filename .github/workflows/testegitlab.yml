@@ -22,11 +22,13 @@ jobs:
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
 
-      # Exportar chave API do Maestro Cloud
-      - name: Set Maestro API Key
-        run: echo "MAESTRO_API_KEY=rb_TaUkQb07Vn8pdQZhSanYBSpUynI6OaoyGnKJX4f63XJG7kgNsWf3cb4pEMNWUnzhUltqmsgNTUn25mx0dETVIrAfSEJAIWI6mxB" >> $GITHUB_ENV
+      # Exportar chave API e Project ID do Maestro
+      - name: Set Environment Variables
+        run: |
+          echo "MAESTRO_API_KEY=rb_TaUkQb07Vn8pdQZhSanYBSpUynI6OaoyGnKJX4f63XJG7kgNsWf3cb4pEMNWUnzhUltqmsgNTUn25mx0dETVIrAfSEJAIWI6mxB" >> $GITHUB_ENV
+          echo "PROJECT_ID=proj_01jj88aq40fhar6brh9v4ravkr" >> $GITHUB_ENV
 
       # Rodar testes usando o Maestro
       - name: Run Maestro Tests
         run: |
-          maestro cloud --apiKey $MAESTRO_API_KEY --project-id proj_01jj88aq40fhar6brh9v4ravkr qafood.apk .maestro/
+          maestro cloud --apiKey $MAESTRO_API_KEY --project-id $PROJECT_ID qafood.apk .maestro/
