@@ -1,4 +1,4 @@
-name: Run Maestro Tests
+name: Executando os testes no Device Farm Robin do Maestro
 
 on:
   push:
