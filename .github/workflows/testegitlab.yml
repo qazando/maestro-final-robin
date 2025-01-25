@@ -1,0 +1,32 @@
+name: Run Maestro Tests git lab
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Baixar e instalar o Maestro
+      - name: Install Maestro
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+
+      # Exportar chave API do Maestro Cloud
+      - name: Export Maestro API Key
+        env:
+          MAESTRO_API_KEY: rb_TaUkQb07Vn8pdQZhSanYBSpUynI6OaoyGnKJX4f63XJG7kgNsWf3cb4pEMNWUnzhUltqmsgNTUn25mx0dETVIrAfSEJAIWI6mxB
+
+      # Rodar testes usando o Maestro
+      - name: Run Maestro Tests
+        run: |
+          maestro cloud --apiKey $MAESTRO_API_KEY --project-id proj_01jj88aq40fhar6brh9v4ravkr qafood.apk .maestro/
