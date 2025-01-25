@@ -1,4 +1,4 @@
-name: Run Maestro Tests git lab
+name: Run Maestro Tests
 
 on:
   push:
@@ -23,9 +23,8 @@ jobs:
           echo "$HOME/.maestro/bin" >> $GITHUB_PATH
 
       # Exportar chave API do Maestro Cloud
-      - name: Export Maestro API Key
-        env:
-          MAESTRO_API_KEY: rb_TaUkQb07Vn8pdQZhSanYBSpUynI6OaoyGnKJX4f63XJG7kgNsWf3cb4pEMNWUnzhUltqmsgNTUn25mx0dETVIrAfSEJAIWI6mxB
+      - name: Set Maestro API Key
+        run: echo "MAESTRO_API_KEY=rb_TaUkQb07Vn8pdQZhSanYBSpUynI6OaoyGnKJX4f63XJG7kgNsWf3cb4pEMNWUnzhUltqmsgNTUn25mx0dETVIrAfSEJAIWI6mxB" >> $GITHUB_ENV
 
       # Rodar testes usando o Maestro
       - name: Run Maestro Tests
