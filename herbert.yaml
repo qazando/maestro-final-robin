@@ -1,0 +1,9 @@
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn:
+    id: "email"
+- inputText: teste@teste.com
+- tapOn:
+    id: "password"
+- inputText: 123456

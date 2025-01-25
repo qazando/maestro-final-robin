@@ -1,0 +1,11 @@
+image: docker.io/qazando/appium-maven
+
+stages:          
+  - test
+
+herbertao-job:       
+  stage: test
+  script:
+    - curl -Ls "https://get.maestro.mobile.dev" | bash
+    - export PATH="$PATH":"$HOME/.maestro/bin"
+    - maestro cloud --apiKey 32e00590-435d-469e-90b2-15806898c0cc qafood.apk .maestro/
